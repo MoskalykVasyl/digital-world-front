@@ -1,0 +1,21 @@
+.wrapper {
+  .form {
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 50%;
+      height: 30vh;
+      object-fit: cover;
+    }
+
+    .editor {
+      width: 60vw;
+    }
+
+    .buttons {
+      display: inline-block;
+    }
+  }
+}

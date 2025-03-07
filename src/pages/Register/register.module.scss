@@ -1,0 +1,55 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 5px 10px;
+    width: fit-content;
+  
+    
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .uploadBtn{
+        background-color: rgb(12, 128, 1);
+        border: none;
+        border-radius: 5px;
+       color: rgb(255, 255, 255);
+      }
+      .deleteBtn{
+        background-color: rgb(211, 47, 47);
+        border: none;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+        margin: 2px;
+      }
+
+
+      .image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 1px !important;
+        padding: 5px 0;
+        
+      }
+  
+      .submitBtn {
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        background-color: rgb(25, 118, 210);
+        color: #fff;
+      }
+    }
+  }
+  

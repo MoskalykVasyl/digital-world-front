@@ -1,0 +1,1 @@
+export const CssLoadingPage = { display:'flex', justifyContent:'center', alignContent:"center", marginTop: '20%'}

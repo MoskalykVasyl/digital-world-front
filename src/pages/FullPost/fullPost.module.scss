@@ -1,0 +1,24 @@
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 10px;
+  border-radius: 16px;
+
+  .imagePost {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .tagList{
+    display: flex;
+    
+  }
+}

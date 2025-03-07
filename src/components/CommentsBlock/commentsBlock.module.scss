@@ -1,0 +1,41 @@
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 10px;
+  border-radius: 16px;
+
+  .commentForm{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+   textarea {
+        width: 90%;
+    padding: 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 5px 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    min-height: 40px;
+    resize: none;
+
+   
+    }
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  p{
+    opacity: 0.8;
+    margin: 0;
+    margin-left: 60px;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-bottom: 1px solid #d8d6d6;
+  }
+}

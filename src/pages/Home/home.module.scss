@@ -1,0 +1,9 @@
+.wrapper{
+    display: flex;
+    gap: 5rem;
+
+    .listPosts {
+        display: flex;
+        flex-direction: column;
+    }
+}

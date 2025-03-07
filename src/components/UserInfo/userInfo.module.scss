@@ -1,0 +1,24 @@
+.wrapper_author_data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    .img_author {
+      border-radius: 30px;
+      height: 40px;
+      margin-right: 10px;
+      width: 40px;
+    }
+
+    .data_author {
+      padding: 5px;
+      .name_author {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .create_date {
+        font-size: 12px;
+        opacity: 0.6;
+      }
+    }
+  }

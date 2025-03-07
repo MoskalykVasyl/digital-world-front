@@ -1,0 +1,24 @@
+.wrapper {
+  max-width: 50%;
+  height: fit-content;
+  background-color: rgb(255, 255, 255);
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #dedede;
+
+  h4{
+    margin: 0;
+  }
+
+  .tagsList {
+    margin: 0 auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    
+   
+    
+  }
+}
