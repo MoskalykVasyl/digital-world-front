@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styles from './addPost.module.scss';
 import 'easymde/dist/easymde.min.css';
 import SimpleMDE from 'react-simplemde-editor';
@@ -6,9 +12,10 @@ import { Button } from '../../components/Button';
 import axios from '../../axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Post } from '../../types/types';
+import TextInput from '../../components/TextInput';
 
- const AddPost = () => {
-  const {id} = useParams();
+const AddPost = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
   const [title, setTitle] = useState('');
@@ -18,23 +25,24 @@ import { Post } from '../../types/types';
 
   const isEditing = Boolean(id);
 
-  useEffect(()=>{
-    if(id){
-      axios.get<Post>(`/posts/${id}`).then(({data})=>{
-        setTitle(data.title);
-        setTags(data.tags.join(','));
-        setImageUrl(data.imageUrl);
-        setText(data.text);
-      }).catch((err)=>{
-        console.warn(err);
-        alert('Error when receiving an article')
-      })
+  useEffect(() => {
+    if (id) {
+      axios
+        .get<Post>(`/posts/${id}`)
+        .then(({ data }) => {
+          setTitle(data.title);
+          setTags(data.tags.join(','));
+          setImageUrl(data.imageUrl);
+          setText(data.text);
+        })
+        .catch((err) => {
+          console.warn(err);
+          alert('Error when receiving an article');
+        });
     }
-  }, [id])
+  }, [id]);
 
-
-
-  const onChange = useCallback((value:string) => {
+  const onChange = useCallback((value: string) => {
     setText(value);
   }, []);
   const options = useMemo(
@@ -50,21 +58,19 @@ import { Post } from '../../types/types';
 
   const onSubmit = async () => {
     try {
+      const fields = { title, tags, text, imageUrl };
 
-      const fields = {title, tags, text, imageUrl};
-
-      const {data} = isEditing ? 
-      await axios.patch(`/posts/${id}`, fields) : 
-      await axios.post('/posts', fields);
+      const { data } = isEditing
+        ? await axios.patch(`/posts/${id}`, fields)
+        : await axios.post('/posts', fields);
 
       const _id = isEditing ? id : data._id;
       navigate(`/posts/${_id}`);
     } catch (err) {
       console.warn(err);
-      alert('Error when creating a post'); 
+      alert('Error when creating a post');
     }
   };
-
 
   const handleChangeFile = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -101,7 +107,10 @@ import { Post } from '../../types/types';
         />
         {imageUrl && (
           <>
-            <img src={`${import.meta.env.VITE_API_URL}${imageUrl}`} alt="Uploaded" />
+            <img
+              src={`${import.meta.env.VITE_API_URL}${imageUrl}`}
+              alt="Uploaded"
+            />
             <Button
               onClick={deleteImage}
               styles={{
@@ -119,9 +128,28 @@ import { Post } from '../../types/types';
         >
           Upload a image
         </Button>
-        <input type="text" placeholder="Title..." onChange={(event)=>setTitle(event.currentTarget.value)} value={title} />
-        <input type="text" placeholder="Tags..." onChange={(event)=>setTags(event.currentTarget.value)} value={tags}/>
-        <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
+        <TextInput
+          label="Title"
+          name="title"
+          placeholder="Write a title for post"
+          onChange={(event) => setTitle(event.currentTarget.value)}
+          value={title}
+          required
+        />
+        <TextInput
+          label="tags"
+          name="tags"
+          placeholder="Write tags for post"
+          onChange={(event) => setTags(event.currentTarget.value)}
+          value={tags}
+          required
+        />
+        <SimpleMDE
+          className={styles.editor}
+          value={text}
+          onChange={onChange}
+          options={options}
+        />
         <div className={styles.buttons}>
           <Button onClick={onSubmit} styles={{ color: 'rgb(25, 118, 210)' }}>
             {isEditing ? 'Save' : 'Publish'}

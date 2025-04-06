@@ -8,6 +8,7 @@ import { Path } from '../../types/enums';
 import { FC } from 'react';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { AxiosErrorWithMessage } from '../../types/error';
+import { TextInput } from '../../components/TextInput';
 
  const Login: FC = () => {
   const dispatch = useAppDispatch();
@@ -38,13 +39,19 @@ import { AxiosErrorWithMessage } from '../../types/error';
   return (
     <div className={styles.wrapper}>
       <h3>authorization</h3>
+      
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('email')} placeholder="Email" />
-        <input
-          {...register('password')}
-          placeholder="Password"
-          type="password"
+        <TextInput 
+          label='Email'
+          placeholder='Enter your email'
+          {...register('email', { required: 'Email is required'})}
         />
+        <TextInput
+          label='Password'
+          type='password'
+          placeholder='Enter your password'
+          {...register('password', { required: 'Password is required' })}
+         />
         {errorMessage && <ErrorMessage message={errorMessage} />}
         <input className={styles.submitBtn} type='submit' value="Sign up" />
       </form>
