@@ -1,4 +1,4 @@
-import  { forwardRef } from 'react';
+import  { ChangeEvent, forwardRef } from 'react';
 import styles from './TextInput.module.scss';
 
 interface TextInputProps {
@@ -10,6 +10,8 @@ interface TextInputProps {
   required?: boolean;
   disabled?: boolean;
   className?: string;
+  value?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
@@ -21,6 +23,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   required = false,
   disabled = false,
   className = '',
+  value,
+  onChange,
   ...props
 }, ref) => {
   return (
@@ -39,6 +43,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
         disabled={disabled}
         ref={ref}
         className={`${styles.input} ${error ? styles.error : ''}`}
+        value={value}
+        onChange={onChange}
         {...props}
       />
       {error && <span className={styles.errorMessage}>{error}</span>}

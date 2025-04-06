@@ -11,8 +11,9 @@ import { Path } from '../../types/enums';
 
 import DefaultAvatar from '../../assets/defaultAvatar.jpg';
 import { ErrorMessage } from '../../components/ErrorMessage';
+import TextInput from '../../components/TextInput';
 
- const Register: FC = () => {
+const Register: FC = () => {
   const {
     register,
     handleSubmit,
@@ -99,7 +100,11 @@ import { ErrorMessage } from '../../components/ErrorMessage';
         >
           Upload a photo
         </button>
-        <input
+        <TextInput
+          label="Email"
+          type="email"
+          required
+          placeholder="White your email"
           {...register('email', {
             required: 'Email is required',
             pattern: {
@@ -107,11 +112,12 @@ import { ErrorMessage } from '../../components/ErrorMessage';
               message: 'Invalid email address',
             },
           })}
-          placeholder="Email"
-          type="email"
         />
         <ErrorMessage message={errors.email?.message} />
-        <input
+        <TextInput
+          label="FullName"
+          placeholder="Write your name"
+          required
           {...register('fullName', {
             required: 'Full Name is required',
             maxLength: {
@@ -119,23 +125,24 @@ import { ErrorMessage } from '../../components/ErrorMessage';
               message: 'Full Name cannot exceed 30 characters',
             },
           })}
-          placeholder="Name"
         />
         <ErrorMessage message={errors.fullName?.message} />
-        <input
-          {...register('password', {
-            required: 'Password is required',
-            minLength: {
-              value: 5,
-              message: 'Password must be at least 5 characters',
-            },
-            maxLength: {
-              value: 20,
-              message: 'Password cannot exceed 20 characters',
-            },
-          })}
-          placeholder="Password"
-          type="text"
+        <TextInput
+        label='Password'
+        type='password'
+        placeholder='Write your password'
+        required
+        {...register('password', {
+          required: 'Password is required',
+          minLength: {
+            value: 5,
+            message: 'Password must be at least 5 characters',
+          },
+          maxLength: {
+            value: 20,
+            message: 'Password cannot exceed 20 characters',
+          },
+        })}
         />
         <ErrorMessage message={errors.password?.message} />
         <input

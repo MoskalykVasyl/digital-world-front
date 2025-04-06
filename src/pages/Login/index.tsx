@@ -43,7 +43,6 @@ import { TextInput } from '../../components/TextInput';
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInput 
           label='Email'
-          // name='email'
           placeholder='Enter your email'
           {...register('email', { required: 'Email is required'})}
         />
