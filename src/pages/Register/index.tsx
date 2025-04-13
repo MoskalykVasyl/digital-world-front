@@ -104,7 +104,7 @@ const Register: FC = () => {
           label="Email"
           type="email"
           required
-          placeholder="White your email"
+          placeholder="Write your email"
           {...register('email', {
             required: 'Email is required',
             pattern: {
