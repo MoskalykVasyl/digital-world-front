@@ -34,7 +34,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
           {label} {required && <span className={styles.required}>*</span>}
         </label>
       )}
-      <input
+     <div className={styles.inputWrapper}>
+      
+     <input
         id={name}
         name={name}
         type={type}
@@ -47,6 +49,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
         onChange={onChange}
         {...props}
       />
+     </div>
       {error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );

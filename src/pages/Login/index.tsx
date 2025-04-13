@@ -14,7 +14,12 @@ import { TextInput } from '../../components/TextInput';
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector(selectIsAuth);
   const errorMessage = useAppSelector((state)=> state.authReducer.errorMessage);
-  const { register, handleSubmit } = useForm<AuthFormData>();
+  const { register, handleSubmit } = useForm<AuthFormData>({
+    defaultValues: {
+      email: 'vasyl@gmail.com',
+      password: '12345'
+    }
+  });
   
 
   const onSubmit = async (values: AuthFormData) => {

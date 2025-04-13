@@ -13,19 +13,22 @@
     color: red;
   }
   
-  .input {
-    width: 90%;
-    padding: 10px 5px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: border-color 0.4s;
+  
     
-    &:focus {
-      outline: none;
-      border-color: #007bff;
+    .input {
+      width: 90%;
+      padding: 10px 5px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.4s;
+      
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+      }
     }
-  }
+  
   
   .error {
     border-color: red;
