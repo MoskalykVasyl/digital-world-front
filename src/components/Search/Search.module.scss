@@ -1,0 +1,14 @@
+.wrapper {
+  width: 40%;
+
+  .search {
+    input {
+      width: 50%;
+      transition: width 0.6s ease-in-out;
+
+      &:focus {
+        width: 100%;
+      }
+    }
+  }
+}
