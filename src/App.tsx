@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { useAppDispatch } from './hooks/reduxHooks';
 import { fetchAuthMe } from './redux/slices/auth';
 
-import './App.css';
 import { BeatLoader } from 'react-spinners';
 import { CssLoadingPage } from './assets/cssObj/cssObj';
 
