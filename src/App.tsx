@@ -15,6 +15,7 @@ const Register = React.lazy(() => import('./pages/Register'));
 const AddPost = React.lazy(() => import('./pages/AddPost'));
 const FullPost = React.lazy(() => import('./pages/FullPost'));
 const PostByTag = React.lazy(() => import('./pages/PostByTag'));
+const Profile = React.lazy(()=> import('./pages/Profile'));
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path={Path.EditPost} element={<AddPost />} />
           <Route path={Path.FullPost} element={<FullPost />} />
           <Route path={Path.PostByTag} element={<PostByTag />} />
+          <Route path={Path.Profile} element={<Profile />} />
         </Routes>
       </Suspense>
     </>
