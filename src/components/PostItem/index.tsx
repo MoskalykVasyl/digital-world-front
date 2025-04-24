@@ -9,6 +9,9 @@ import EditSVG from '../../assets/edit.svg';
 import DeleteSVG from '../../assets/delete.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { fetchDeletePost } from '../../redux/slices/posts';
+import { MdOutlineWatchLater } from 'react-icons/md';
+import { addReadLater } from '../../redux/slices/collections';
+import { readLaterPost } from '../../types/types';
 
 interface PostProp {
   id: string;
@@ -41,8 +44,14 @@ export const PostItem: FC<PostProp> = ({
   const deletePost = (id: string) => {
     dispatch(fetchDeletePost(id));
   };
+
+  const handlerReadLater = (data: readLaterPost) =>{
+    dispatch(addReadLater(data));
+    alert('Post added to read later collections');
+  }
   return (
     <div className={styles.post_wrapper}>
+      <MdOutlineWatchLater className={styles.readLater} onClick={()=> handlerReadLater({_id: id, title})} />
       {authorId === user._id && (
         <div className={styles.actionBtn}>
           <Link to={`/post/${id}/edit`}>

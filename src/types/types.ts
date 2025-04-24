@@ -35,6 +35,11 @@ export interface Post {
   __v?: number;
 }
 
+export interface readLaterPost {
+  _id: string;
+  title: string;
+}
+
 export type AddPostFormData = {
   title: string;
   text: string;
