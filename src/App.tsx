@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { useAppDispatch } from './hooks/reduxHooks';
 import { fetchAuthMe } from './redux/slices/auth';
 
-import './App.css';
 import { BeatLoader } from 'react-spinners';
 import { CssLoadingPage } from './assets/cssObj/cssObj';
 
@@ -16,6 +15,8 @@ const Register = React.lazy(() => import('./pages/Register'));
 const AddPost = React.lazy(() => import('./pages/AddPost'));
 const FullPost = React.lazy(() => import('./pages/FullPost'));
 const PostByTag = React.lazy(() => import('./pages/PostByTag'));
+const Profile = React.lazy(()=> import('./pages/Profile'));
+const ReadLater = React.lazy(()=> import('./pages/ReadLater'));
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
           <Route path={Path.EditPost} element={<AddPost />} />
           <Route path={Path.FullPost} element={<FullPost />} />
           <Route path={Path.PostByTag} element={<PostByTag />} />
+          <Route path={Path.Profile} element={<Profile />} />
+          <Route path={Path.ReadLater} element={<ReadLater />} />
         </Routes>
       </Suspense>
     </>

@@ -6,6 +6,7 @@ import { Path } from '../../types/enums';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { logout, selectIsAuth } from '../../redux/slices/auth';
 import { FC } from 'react';
+import { MenuBar } from '../Menu';
 
 
 const signInBtnStyles = {
@@ -35,6 +36,7 @@ export const Header: FC = () => {
       <Link to={Path.Home}>
         <div className={styles.logo}>digital world</div>
       </Link>
+      
       <div className={styles.buttons}>
 
         {isAuth ? (
@@ -56,6 +58,7 @@ export const Header: FC = () => {
             </Link>
           </>
         )}
+      <MenuBar />
       </div>
     </div>
   );

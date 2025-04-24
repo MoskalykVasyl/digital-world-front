@@ -1,0 +1,87 @@
+.menuWrapper{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    // justify-content: start;
+    // align-items: start;
+   
+
+    .menuButton {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    }
+
+    .menu{
+        position: absolute;
+        top: 65px;
+        right: 10px;
+        width: 120px;
+        padding: 5px;
+        background-color: #fff;
+        border: 1px solid #dd8717;
+        border-radius: 7px;
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+        transition: 0.3s;
+
+        &.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ::before, ::after {
+            display: block;
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 10px;
+            right: 12px;
+            border: 10px solid transparent;
+        }
+
+        ::before{
+            top:-30px;
+            border-bottom: 10px solid #dd8717;
+        }
+
+        ::after{
+            top: -29px;
+            border-bottom: 10px solid #fff;
+        }
+    }
+
+    .menuList {
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        list-style-type: none;
+
+        .menuItem {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #747474;
+            cursor: pointer;
+            
+            .icon {
+                margin-right: 10px;
+                font-size: 1rem;
+                color: inherit;
+            }
+        }
+
+    }
+}

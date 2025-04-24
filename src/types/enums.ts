@@ -11,5 +11,7 @@ export enum Path {
   AddPost = '/add-post',
   FullPost = '/posts/:id',
   PostByTag = '/tags/:name',
-  EditPost = '/post/:id/edit'
+  EditPost = '/post/:id/edit',
+  Profile = '/profile',
+  ReadLater = '/profile/read-later'
 }
