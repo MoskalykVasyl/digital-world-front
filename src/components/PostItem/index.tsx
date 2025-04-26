@@ -15,6 +15,7 @@ import { readLaterPost } from '../../types/types';
 import { Toast } from '../Toast';
 import { showToast } from '../../redux/slices/toast';
 import { ToastMessage } from '../../types/enums';
+import { selectIsAuth } from '../../redux/slices/auth';
 
 interface PostProp {
   id: string;
@@ -43,18 +44,24 @@ export const PostItem: FC<PostProp> = ({
 }) => {
   const authorId = useAppSelector((state) => state.authReducer.data?._id);
   const dispatch = useAppDispatch();
+  const isAuth = useAppSelector(selectIsAuth);
 
   const deletePost = (id: string) => {
     dispatch(fetchDeletePost(id));
   };
 
-  const handlerReadLater = (data: readLaterPost) =>{
+  const handlerReadLater = (data: readLaterPost) => {
     dispatch(addReadLater(data));
-    dispatch(showToast(ToastMessage.AddPostToReadLater))
-  }
+    dispatch(showToast(ToastMessage.AddPostToReadLater));
+  };
   return (
     <div className={styles.post_wrapper}>
-      <MdOutlineWatchLater className={styles.readLater} onClick={()=> handlerReadLater({_id: id, title})} />
+      {isAuth && (
+        <MdOutlineWatchLater
+          className={styles.readLater}
+          onClick={() => handlerReadLater({ _id: id, title })}
+        />
+      )}
       {authorId === user._id && (
         <div className={styles.actionBtn}>
           <Link to={`/post/${id}/edit`}>
