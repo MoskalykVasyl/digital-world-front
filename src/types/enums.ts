@@ -15,3 +15,11 @@ export enum Path {
   Profile = '/profile',
   ReadLater = '/profile/read-later'
 }
+
+export enum ToastMessage {
+  AddPostToReadLater = 'Post added to read later collections',
+  Logout = 'User logged out',
+  SignIn = 'User sign in',
+  AddComment = 'Comment added'
+
+}

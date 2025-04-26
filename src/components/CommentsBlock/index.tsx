@@ -5,6 +5,10 @@ import { Comment } from '../../types/types';
 import { Button } from '../Button';
 import { useParams } from 'react-router-dom';
 import axios from '../../axios'
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { showToast } from '../../redux/slices/toast';
+import { ToastMessage } from '../../types/enums';
+import { Toast } from '../Toast';
 
 
 interface CommentsBlockProps {
@@ -15,6 +19,7 @@ interface CommentsBlockProps {
 export const CommentsBlock: FC<CommentsBlockProps> = ({comments, handleAddComment}) => {
     const [textComment, setTextComment] = useState('');
     const {id} = useParams();
+    const disptach = useAppDispatch();
     
     const addCommentHandler = async() => {
         try {
@@ -25,6 +30,7 @@ export const CommentsBlock: FC<CommentsBlockProps> = ({comments, handleAddCommen
               console.log(data);
               handleAddComment(data)
               setTextComment('');
+              disptach(showToast(ToastMessage.AddComment))
         } catch (err) {
             console.warn(err);
       alert('Comment did not send!');
@@ -57,7 +63,7 @@ export const CommentsBlock: FC<CommentsBlockProps> = ({comments, handleAddCommen
         ))
         
       ) }
-
+    <Toast />
     </div>
   );
 };

@@ -4,11 +4,13 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { fetchAuth, selectIsAuth } from '../../redux/slices/auth';
 import { AuthFormData } from '../../types/auth';
 import { Navigate } from 'react-router-dom';
-import { Path } from '../../types/enums';
+import { Path, ToastMessage } from '../../types/enums';
 import { FC } from 'react';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { AxiosErrorWithMessage } from '../../types/error';
 import { TextInput } from '../../components/TextInput';
+import { showToast } from '../../redux/slices/toast';
+import { Toast } from '../../components/Toast';
 
  const Login: FC = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +33,7 @@ import { TextInput } from '../../components/TextInput';
     if('token' in user){
       window.localStorage.setItem('token', user.token);
     }
+    dispatch(showToast(ToastMessage.SignIn))
 
     } catch (error: unknown) {
       const axiosError = error as AxiosErrorWithMessage;
@@ -60,6 +63,7 @@ import { TextInput } from '../../components/TextInput';
         {errorMessage && <ErrorMessage message={errorMessage} />}
         <input className={styles.submitBtn} type='submit' value="Sign up" />
       </form>
+      <Toast />
     </div>
   );
 };
