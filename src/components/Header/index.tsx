@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import { Button } from '../Button';
 
 import styles from './Header.module.scss';
-import { Path } from '../../types/enums';
+import { Path, ToastMessage } from '../../types/enums';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { logout, selectIsAuth } from '../../redux/slices/auth';
 import { FC } from 'react';
 import { MenuBar } from '../Menu';
+import { showToast } from '../../redux/slices/toast';
+import { Toast } from '../Toast';
 
 
 const signInBtnStyles = {
@@ -28,6 +30,7 @@ export const Header: FC = () => {
     if (window.confirm('Are you sure you want to log out?')) {
       dispatch(logout());
       window.localStorage.removeItem('token');
+      dispatch(showToast(ToastMessage.Logout))
     }
   };
   
@@ -60,6 +63,7 @@ export const Header: FC = () => {
         )}
       <MenuBar />
       </div>
+      <Toast />
     </div>
   );
 };

@@ -12,6 +12,9 @@ import { fetchDeletePost } from '../../redux/slices/posts';
 import { MdOutlineWatchLater } from 'react-icons/md';
 import { addReadLater } from '../../redux/slices/collections';
 import { readLaterPost } from '../../types/types';
+import { Toast } from '../Toast';
+import { showToast } from '../../redux/slices/toast';
+import { ToastMessage } from '../../types/enums';
 
 interface PostProp {
   id: string;
@@ -47,7 +50,7 @@ export const PostItem: FC<PostProp> = ({
 
   const handlerReadLater = (data: readLaterPost) =>{
     dispatch(addReadLater(data));
-    alert('Post added to read later collections');
+    dispatch(showToast(ToastMessage.AddPostToReadLater))
   }
   return (
     <div className={styles.post_wrapper}>
@@ -82,6 +85,7 @@ export const PostItem: FC<PostProp> = ({
         </ul>
         <PostStats viewsCount={viewsCount} commentsCount={commentsCount} />
       </div>
+      <Toast />
     </div>
   );
 };
