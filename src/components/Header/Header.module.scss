@@ -3,9 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
   background-color: rgb(255, 255, 255);
-  padding: 0 5px ;
+  padding: 5px;
   border-radius: 8px;
 
   .logo {
@@ -33,5 +32,25 @@
 
   .buttons {
     display: flex;
+    > *:not(:last-child) {
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      line-height: 28px;
+      letter-spacing: 0.1px;
+    }
+    .buttons {
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
