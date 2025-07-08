@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import { Button } from '../Button';
 
 import styles from './Header.module.scss';
-import { Path, ToastMessage } from '../../types/enums';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { logout, selectIsAuth } from '../../redux/slices/auth';
+import { Path } from '../../types/enums';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { selectIsAuth } from '../../redux/slices/auth';
 import { FC } from 'react';
 import { MenuBar } from '../Menu';
-import { showToast } from '../../redux/slices/toast';
-import { Toast } from '../Toast';
 
+import { Toast } from '../Toast';
 
 const signInBtnStyles = {
   color: 'rgb(25, 118, 210)',
@@ -18,39 +17,21 @@ const signInBtnStyles = {
 
 const createBtnStyle = { backgroundColor: 'rgb(25, 118, 210)' };
 
-const logOutBtnStyle = { backgroundColor: 'rgb(211, 47, 47)', borderWidth:'0px' };
-
-
 
 export const Header: FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
-  const dispatch = useAppDispatch();
 
-  const handleLogOut = () => {
-    if (window.confirm('Are you sure you want to log out?')) {
-      dispatch(logout());
-      window.localStorage.removeItem('token');
-      dispatch(showToast(ToastMessage.Logout))
-    }
-  };
-  
   return (
     <div className={styles.header}>
       <Link to={Path.Home}>
         <div className={styles.logo}>digital world</div>
       </Link>
-      
-      <div className={styles.buttons}>
 
+      <div className={styles.buttons}>
         {isAuth ? (
-          <>
           <Link to={Path.AddPost}>
             <Button styles={signInBtnStyles}>New post</Button>
           </Link>
-            <Button styles={logOutBtnStyle} onClick={handleLogOut}>
-              Log out
-            </Button>
-          </>
         ) : (
           <>
             <Link to={Path.Login}>
@@ -61,7 +42,7 @@ export const Header: FC = () => {
             </Link>
           </>
         )}
-      <MenuBar />
+        <MenuBar />
       </div>
       <Toast />
     </div>
