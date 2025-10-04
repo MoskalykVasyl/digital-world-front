@@ -31,4 +31,4 @@
 <h2>💾 Backend Repository</h2>
 
 You can check out the server-side code here:  
-👉 Digital World API (Backend) [https://github.com/your-username/digital-world-backend](https://github.com/MoskalykVasyl/digital-world-beck)
+👉 Digital World API (Backend) https://github.com/MoskalykVasyl/digital-world-beck
