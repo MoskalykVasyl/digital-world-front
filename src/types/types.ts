@@ -12,11 +12,8 @@ export interface User {
 
 export interface Comment {
   text: string;
+  user: Pick<User, 'fullName' | 'avatarUrl'>;
   createdAt: string;
-  user: {
-    fullName: string;
-    avatarUrl: string;
-  }
   _id: string;
 }
 
@@ -27,7 +24,7 @@ export interface Post {
   tags: string[];
   commentsCount: number;
   viewsCount: number;
-  user: User;
+  user: Omit<User, 'email' | 'passwordHash' | 'createdAt' | 'updatedAt' | '__v' | 'token'>;
   imageUrl: string;
   comments?: Comment[];
   createdAt: string;
@@ -40,9 +37,4 @@ export interface readLaterPost {
   title: string;
 }
 
-export type AddPostFormData = {
-  title: string;
-  text: string;
-  imageUrl?: string;
-  tags: string;
-}
+export type AddPostFormData = Pick<Post, 'title' | 'text' | 'imageUrl'> & { tags: string };
